@@ -1,0 +1,12 @@
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.deps.json
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.dll
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\bin\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.pdb
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.dll
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.pdb
