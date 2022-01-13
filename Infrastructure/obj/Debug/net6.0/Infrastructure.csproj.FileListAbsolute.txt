@@ -10,3 +10,8 @@ C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\I
 C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
 C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
 C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\bin\Debug\net6.0\Infrastructure.runtimeconfig.json
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\bin\Debug\net6.0\ApplicationCore.dll
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\bin\Debug\net6.0\ApplicationCore.pdb
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+C:\Users\aloma\Desktop\Antra\Nov2021\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.genruntimeconfig.cache

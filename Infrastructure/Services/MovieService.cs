@@ -1,6 +1,4 @@
-﻿using ApplicationCore.Contracts.Repoisitories;
-using ApplicationCore.Contracts.Services;
-using ApplicationCore.Models;
+﻿using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,54 +7,19 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class MovieService : IMovieService
+    public class MovieService
     {
-        private readonly IMovieRepository _movieRepository;
+        public List<MovieCardResponseModel> GetTop30GrossingMovies()
 
-        public MovieService(IMovieRepository movieRepository)
         {
-            _movieRepository = movieRepository;
-        }
-
-        public async Task<MovieDetailsResponseModel> GetMovieDetails(int id)
-        {
-            var movieDetails = await _movieRepository.GetById(id);
-
-            var movieModel = new MovieDetailsResponseModel
+            var movies = new List<MovieCardResponseModel>()
             {
-                Id = movieDetails.Id,
-                Title = movieDetails.Title,
-                PosterUrl = movieDetails.PosterUrl,
-                BackdropUrl = movieDetails.BackdropUrl,
-                ImdbUrl = movieDetails.ImdbUrl
-            };
-
-            foreach (var genre in movieDetails.GernesOfMovie)
-            {
-                movieModel.Genres.Add(new GenreModel { Id = genre.GenreId, Name = genre.Genre.Name });
-            }
-
-            foreach (var trailer in movieDetails.Trailers)
-            {
-                movieModel.Trailers.Add(new TrailerModel { Id = trailer.Id, Name = trailer.Name, TrailerUrl = trailer.TrailerUrl });
-            }
-
-            return movieModel;
-        }
-
-        public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
-        {
-            var movies = await _movieRepository.Get30HighestGrossingMovies();
-            // map the data from movies (List<Movie>) to movieCards (List<MovieCardResponseModel>)
-
-            var movieCards = new List<MovieCardResponseModel>();
-
-            foreach (var movie in movies)
-            {
-                movieCards.Add(new MovieCardResponseModel { Id = movie.Id, Title = movie.Title, PosterUrl = movie.PosterUrl });
-            }
-
-            return movieCards;
+                new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" },
+               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" },
+               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" }
+               };
+            return movies;
+            
         }
     }
 }
