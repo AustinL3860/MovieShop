@@ -14,9 +14,9 @@ namespace Infrastructure.Services
         {
             var movies = new List<MovieCardResponseModel>()
             {
-                new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" },
-               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" },
-               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" }
+                new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="https://flxt.tmsimg.com/assets/p7825626_p_v10_af.jpg" },
+               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="https://flxt.tmsimg.com/assets/p7825626_p_v10_af.jpg" },
+               new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="https://flxt.tmsimg.com/assets/p7825626_p_v10_af.jpg" }
                };
             return movies;
             

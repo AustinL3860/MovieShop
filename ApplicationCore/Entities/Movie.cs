@@ -8,6 +8,8 @@ namespace ApplicationCore.Entities
 {
     public class Movie
     {
+        public readonly object GernesOfMovie;
+
         public int Id { get; set; }
         public string? Title { get; set; }
         public string? Overview { get; set; }
@@ -27,9 +29,9 @@ namespace ApplicationCore.Entities
         public string? UpdatedBy { get; set; }
         public string? CreatedBy { get; set; }
 
-        /* Naviagtion
+        // Naviagtion
         public List<Trailer> Trailers { get; set; }
-        public List<MovieGenre> GernesOfMovie { get; set; }
-        */
+        public List<MovieGenre> GenresOfMovie { get; set; }
+        
     }
 }

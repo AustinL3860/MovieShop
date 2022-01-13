@@ -20,6 +20,7 @@ namespace Infrastructure.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Trailer> trailers { get; set; }
+        public DbSet<MovieGenre> movieGenres { get; set; }
 
 
 
@@ -27,8 +28,17 @@ namespace Infrastructure.Data
         {
             modelBuilder.Entity<Movie>(ConfigureMovie);
             modelBuilder.Entity<Trailer>(ConfigureTrailer);
+            modelBuilder.Entity<MovieGenre>(ConfigureMovieGenre);
+
         }
 
+        private void ConfigureMovieGenre (EntityTypeBuilder<MovieGenre> builder)
+        {
+            builder.ToTable("MovieGenre");
+            builder.HasKey(mg => new { mg.MovieId, mg.GenreId });
+            builder.HasOne(m => m.Movie).WithMany(m => m.GenresOfMovie).HasForeignKey(m => m.MovieId);
+            builder.HasOne(m => m.Genre).WithMany(m => m.MoviesOfGenre).HasForeignKey(m => m.GenreId);
+        }
         private void ConfigureTrailer(EntityTypeBuilder<Trailer> builder)
         {
 
