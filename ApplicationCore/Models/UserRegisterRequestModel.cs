@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Models
 {
-    internal class UserRegisterRequestModel
+    public class UserRegisterRequestModel
     {
+        public class
     }
 }
