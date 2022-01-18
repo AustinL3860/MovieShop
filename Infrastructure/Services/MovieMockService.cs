@@ -10,6 +10,11 @@ namespace Infrastructure.Services
 {
     public class MovieMockService : IMovieService
     {
+        public Task<MovieDetailsResponseModel> GetMovieDetails(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<MovieCardResponseModel> GetTop30GrossingMovies()
         {
             var movies = new List<MovieCardResponseModel>()
@@ -19,6 +24,11 @@ namespace Infrastructure.Services
                new MovieCardResponseModel() {Id =1, Title="Inception", PosterUrl="" }
                };
             return movies;
+        }
+
+        Task<List<MovieCardResponseModel>> IMovieService.GetTop30GrossingMovies()
+        {
+            throw new NotImplementedException();
         }
     }
 }

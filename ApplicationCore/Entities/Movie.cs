@@ -32,6 +32,10 @@ namespace ApplicationCore.Entities
         // Naviagtion
         public List<Trailer> Trailers { get; set; }
         public List<MovieGenre> GenresOfMovie { get; set; }
-        
+        public List<MovieCast> MovieCast { get; set; }
+        public List<MovieCrew> CrewesOfMovie { get; }
+        public List<Review> ReviewOfMovie { get; set; }
+        //public List<Favorite> FavoriteOfMovie { get; set; }
+        //public List<Purchase> PurchaseOfMovie { get; set; }
     }
 }

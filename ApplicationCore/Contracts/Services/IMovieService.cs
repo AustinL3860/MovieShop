@@ -9,6 +9,8 @@ namespace ApplicationCore.Contracts.Services
 {
     public interface IMovieService
     {
-        List<MovieCardResponseModel> GetTop30GrossingMovies();
+        Task<List<MovieCardResponseModel>> GetTop30GrossingMovies();
+        Task<MovieDetailsResponseModel> GetMovieDetails(int id);
     }
+
 }
