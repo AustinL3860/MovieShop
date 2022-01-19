@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
     public class Movie
     {
-        public readonly object GernesOfMovie;
-
         public int Id { get; set; }
         public string? Title { get; set; }
         public string? Overview { get; set; }
@@ -29,13 +24,15 @@ namespace ApplicationCore.Entities
         public string? UpdatedBy { get; set; }
         public string? CreatedBy { get; set; }
 
-        // Naviagtion
-        public List<Trailer> Trailers { get; set; }
-        public List<MovieGenre> GenresOfMovie { get; set; }
-        public List<MovieCast> MovieCast { get; set; }
-        public List<MovieCrew> CrewesOfMovie { get; }
-        public List<Review> ReviewOfMovie { get; set; }
-        //public List<Favorite> FavoriteOfMovie { get; set; }
-        //public List<Purchase> PurchaseOfMovie { get; set; }
+        public decimal? Rating { get; set; }
+
+
+        // Navigation Property
+        public ICollection<Trailer> Trailers { get; set; }
+        public ICollection<MovieCast> MovieCasts { get; set; }
+        public ICollection<MovieCast> CrewesOfMovie { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<MovieGenre> MovieGenres { get; set; }
+
     }
 }

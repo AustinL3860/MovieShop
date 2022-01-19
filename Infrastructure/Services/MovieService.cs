@@ -12,6 +12,7 @@ namespace Infrastructure.Services
     public class MovieService : IMovieService
     {
         private readonly IMovieRepository _movieRepository;
+
         public MovieService(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
@@ -20,26 +21,18 @@ namespace Infrastructure.Services
         public async Task<MovieDetailsResponseModel> GetMovieDetails(int id)
         {
             var movieDetails = await _movieRepository.GetById(id);
-
+            var rating = await _movieRepository.GetMovieRating(id);
             var movieModel = new MovieDetailsResponseModel
             {
                 Id = movieDetails.Id,
                 Title = movieDetails.Title,
                 PosterUrl = movieDetails.PosterUrl,
                 BackdropUrl = movieDetails.BackdropUrl,
-                //Rating = movieDetails.Rating,
-                Overview = movieDetails.Overview,
-                Tagline = movieDetails.Tagline,
-                Budget = movieDetails.Budget,
-                Revenue = movieDetails.Revenue,
                 ImdbUrl = movieDetails.ImdbUrl,
-                TmdbUrl = movieDetails.TmdbUrl,
-                ReleaseDate = movieDetails.ReleaseDate,
-                RunTime = movieDetails.RunTime,
-                Price = movieDetails.Price,
+                Rating = rating,
             };
 
-            foreach (var genre in movieDetails.GenresOfMovie)
+            foreach (var genre in movieDetails.MovieGenres)
             {
                 movieModel.Genres.Add(new GenreModel { Id = genre.GenreId, Name = genre.Genre.Name });
             }
@@ -49,17 +42,11 @@ namespace Infrastructure.Services
                 movieModel.Trailers.Add(new TrailerModel { Id = trailer.Id, Name = trailer.Name, TrailerUrl = trailer.TrailerUrl });
             }
 
-            foreach (var cast in movieDetails.MovieCast)
-            {
-                movieModel.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath });
-            }
             return movieModel;
-
         }
 
         public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
         {
-            // we need to call the MovieRepository and get the data from Movies Table
             var movies = await _movieRepository.Get30HighestGrossingMovies();
             // map the data from movies (List<Movie>) to movieCards (List<MovieCardResponseModel>)
 

@@ -1,5 +1,7 @@
+
 using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Entities;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
@@ -11,30 +13,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IMovieService, MovieService>();
-//builder.Services.AddScoped<IMovieRepository, MovieRepository>();
-builder.Services.AddScoped<ICastService, CastService>();
-//builder.Services.AddScoped<ICastRepository, CastRepository>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRepository<Genre>, EfRepository<Genre>>();
+//builder.Services.AddScoped<IGenreService, GenreService>();
 
 // cookie based authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-   .AddCookie(options =>
-   {
-       options.Cookie.Name = "MovieShopAuthCookie";
-       options.ExpireTimeSpan = TimeSpan.FromHours(2);
-       options.LoginPath = "/account/login";
-   });
-
-//inject connection string to DbContext
-builder.Services.AddDbContext<MovieShopDbContext>(
-    options =>
+    .AddCookie(options =>
     {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection"));
-    }
-    );
+        options.Cookie.Name = "MovieShopAuthCookie";
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.LoginPath = "/account/login";
+    });
 
+// inject connection string to DbContext
+builder.Services.AddDbContext<MovieShopDbContext>(
+    options => { options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection")); }
+);
 
 var app = builder.Build();
 
@@ -50,13 +47,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-// Middlewares in ASP.NET Core
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-*/
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
+
 app.Run();

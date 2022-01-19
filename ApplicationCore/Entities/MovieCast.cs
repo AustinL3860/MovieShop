@@ -14,5 +14,8 @@ namespace ApplicationCore.Entities
 
         public Movie Movie { get; set; }
         public Cast Cast { get; set; }
+        public List<MovieCast> CrewsOfMovie { get; set; }
     }
+
+    
 }
