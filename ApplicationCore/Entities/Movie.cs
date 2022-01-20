@@ -24,10 +24,7 @@ namespace ApplicationCore.Entities
         public string? UpdatedBy { get; set; }
         public string? CreatedBy { get; set; }
 
-        public decimal? Rating { get; set; }
-
-
-        // Navigation Property
+         // Navigation Property
         public ICollection<Trailer> Trailers { get; set; }
         public ICollection<MovieCast> MovieCasts { get; set; }
         public ICollection<MovieCast> CrewesOfMovie { get; set; }

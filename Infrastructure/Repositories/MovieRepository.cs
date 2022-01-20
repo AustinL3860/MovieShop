@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
             // EF Core does the I/O bound operation
             // EF Core has both async and sync method
             // Dapper, has both async and sync method
-            var movies = await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30).ToListAsync();
+            var movies = await _dbContext.Movies.OrderBy(m => m.Id).Take(30).ToListAsync();
             return movies;
 
         }

@@ -21,7 +21,10 @@ builder.Services.AddScoped<IRepository<Genre>, EfRepository<Genre>>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICastService, CastService>();
+builder.Services.AddScoped<ICastRepository, CastRepository>();
+builder.Services.AddScoped<ICurrentLoginUserService , CurrentLoginUserService>();
 
+builder.Services.AddHttpContextAccessor();
 
 // cookie based authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
