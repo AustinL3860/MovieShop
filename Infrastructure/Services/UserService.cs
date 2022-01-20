@@ -1,4 +1,6 @@
-﻿using ApplicationCore.Contracts.Services;
+﻿using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Contracts.Services;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
@@ -10,24 +12,39 @@ namespace Infrastructure.Services
 {
     public class UserService : IUserService
     {
-        public Task AddFavorite(FavoriteRequestModel favoriteRequest)
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
         {
-            throw new NotImplementedException();
+            _userRepository = userRepository;
+        }
+        public async Task AddFavorite(FavoriteRequestModel favoriteRequest)
+        {
+            int userId = favoriteRequest.UserId;
+            int movieId = favoriteRequest.MovieId;
+            var addFavorite = await _userRepository.AddFavorite(userId, movieId);
         }
 
-        public Task AddMovieReview(ReviewRequestModel reviewRequest)
+        public async Task AddMovieReview(ReviewRequestModel reviewRequest)
         {
-            throw new NotImplementedException();
+            int movieId = reviewRequest.MovieId;
+            int userId = reviewRequest.UserId;
+            decimal rating = reviewRequest.Rating;
+            string reviewText = reviewRequest?.ReviewText;
+            var addMovieReview = await _userRepository.AddMovieReview(userId, movieId, rating, reviewText);
         }
 
-        public Task DeleteMovieReview(int userId, int movieId)
+        public async Task DeleteMovieReview(int userId, int movieId)
         {
-            throw new NotImplementedException();
+            await _userRepository.DeleteMovieReview(userId, movieId);
         }
 
-        public Task<bool> FavoriteExists(int id, int movieId)
+        public async Task<bool> FavoriteExists(int id, int movieId)
         {
-            throw new NotImplementedException();
+
+            Favorite favorite = await _userRepository.GetFavorite(id, movieId);
+
+            return favorite != null;
         }
 
         public Task<FavoriteResponseModel> GetAllFavoriteForUser(int id)
@@ -50,24 +67,35 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseReques, int userId)
+        public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseReques, int userId)
         {
-            throw new NotImplementedException();
+            var isPurchased = await _userRepository.GetPurchasesDetails(userId, purchaseReques.MovieId);
+
+            return isPurchased != null;
         }
 
-        public Task<bool> PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId)
+        public async Task<bool> PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId)
         {
-            throw new NotImplementedException();
+
+            var purchase = await _userRepository.AddNewPurchase(userId, purchaseRequest.MovieId, purchaseRequest.TotalPrice);
+
+            return purchase != null;
         }
 
-        public Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
+        public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
         {
-            throw new NotImplementedException();
+            var remove = await _userRepository.RemoveFavorite(favoriteRequest.UserId, favoriteRequest.MovieId);
         }
 
-        public Task UpdateMovieReview(ReviewRequestModel reviewRequest)
+        public async Task UpdateMovieReview(ReviewRequestModel reviewRequest)
         {
-            throw new NotImplementedException();
+            var updateReview = await _userRepository.UpdateMovieReview
+               (
+                   reviewRequest.MovieId,
+                   reviewRequest.UserId,
+                   reviewRequest.Rating,
+                   reviewRequest.ReviewText
+               );
         }
     }
 }
