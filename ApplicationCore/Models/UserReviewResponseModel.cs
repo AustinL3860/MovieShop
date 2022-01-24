@@ -8,5 +8,9 @@ namespace ApplicationCore.Models
 {
     public class UserReviewResponseModel
     {
+        public bool Any()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

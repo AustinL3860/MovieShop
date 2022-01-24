@@ -107,5 +107,9 @@ namespace Infrastructure.Services
             return hashed;
         }
 
+        public Task ValidateUser(LoginRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -52,6 +52,11 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
+        public Task<UserReviewResponseModel> GetAllPurchaseDetailByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<PurchaseResponseModel> GetAllPurchasesForUser(int id)
         {
             throw new NotImplementedException();
@@ -85,6 +90,11 @@ namespace Infrastructure.Services
         public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
         {
             var remove = await _userRepository.RemoveFavorite(favoriteRequest.UserId, favoriteRequest.MovieId);
+        }
+
+        public Task<PurchaseRequestModel> RemovePurchase(int id, int movieId)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task UpdateMovieReview(ReviewRequestModel reviewRequest)

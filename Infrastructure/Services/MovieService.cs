@@ -18,6 +18,11 @@ namespace Infrastructure.Services
             _movieRepository = movieRepository;
         }
 
+        public Task<List<MovieCardResponseModel>> GetHighestGrossingMovies()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<MovieDetailsResponseModel> GetMovieDetails(int id)
         {
             var movieDetails = await _movieRepository.GetById(id);
@@ -45,6 +50,16 @@ namespace Infrastructure.Services
             return movieModel;
         }
 
+        public Task<MovieDetailsResponseModel> GetMovieDetailsById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<MovieCardResponseModel>> GetMoviesByPagination(int pageSize, int page, string title)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
         {
             var movies = await _movieRepository.Get30HighestGrossingMovies();
@@ -58,6 +73,11 @@ namespace Infrastructure.Services
             }
 
             return movieCards;
+        }
+
+        public Task<MovieDetailsResponseModel> MoviesSameGenre(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

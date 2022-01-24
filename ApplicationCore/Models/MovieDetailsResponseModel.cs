@@ -32,5 +32,10 @@ namespace ApplicationCore.Models
         public List<GenreModel> Genres { get; set; }
         public List<TrailerModel> Trailers { get; set; }
         public List<CastModel> Casts { get; set; }
+
+        public bool Any()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
