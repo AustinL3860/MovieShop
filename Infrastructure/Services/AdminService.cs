@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Contracts.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace Infrastructure.Services
 {
     public class AdminService
     {
+        private readonly IAdminRepository _adminService;
+
+
     }
 }

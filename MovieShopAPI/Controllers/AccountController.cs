@@ -17,6 +17,22 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> Register(UserRegisterRequestModel model)
+        {
+            var user = await _accountService.Validate(model.Email, model.Password);
+
+            if (user == null)
+            {
+                return Unauthorized("Wrong email/password");
+            }
+            // JWT Authentication
+            return Ok(user);
+        }
+
+     
+
+        [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginRequestModel model)
         {
